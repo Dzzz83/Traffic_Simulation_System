@@ -14,8 +14,11 @@ package trafficWrapper;
 
 import de.tudresden.sumo.cmd.Vehicle;
 import it.polito.appeal.traci.SumoTraciConnection;
+
+import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.ArrayList;
+import de.tudresden.sumo.objects.SumoPosition2D;
 
 // TO DO:
 // get number of vehicles
@@ -78,4 +81,136 @@ public class VehicleWrapper
         return 0.0;
     }
 
+    // get the position of the vehicle
+    public SumoPosition2D getPosition(String vehicleId)
+    {
+        try
+        {
+            return (SumoPosition2D) connection.do_job_get(Vehicle.getPosition(vehicleId));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to get the position of the vehicle " + vehicleId);
+            e.printStackTrace();
+        }
+        return new SumoPosition2D(0.0, 0.0);
+    }
+
+    // get the ID of the lane
+    public String getLaneID(String vehicleId)
+    {
+        try
+        {
+            return (String) connection.do_job_get(Vehicle.getLaneID(vehicleId));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to get the laneID of the vehicle " + vehicleId);
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    // get the ID of the road
+    public String getRoadID(String vehicleId)
+    {
+        try
+        {
+            return (String) connection.do_job_get(Vehicle.getRoadID(vehicleId));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to get the roadId of the vehicle " + vehicleId);
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    // add the vehicle
+    public void addVehicle(String vehicleId, String typeId, String routeId, int depart, double position, double speed, byte lane)
+    {
+        try
+        {
+            connection.do_job_set(Vehicle.add(vehicleId, typeId, routeId, depart, position, speed, lane));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to add the vehicle " + vehicleId);
+            e.printStackTrace();
+        }
+    }
+
+    // tells the vehicle to follow a route that's already defined
+    public void setRouteID(String vehicleId, String routeId)
+    {
+        try
+        {
+            connection.do_job_set(Vehicle.setRouteID(vehicleId, routeId));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to set the route of the vehicle:  " + vehicleId);
+            e.printStackTrace();
+        }
+    }
+
+    /*
+        (byte)0 - Teleport (default) - vehicle disappears gracefully
+        (byte)1 - Parking - vehicle parks and is removed
+        (byte)2 - Arrived - vehicle reached destination
+        (byte)3 - Vaporized - immediate removal
+     */
+    // remove the vehicle
+    public void removeVehicle(String vehicleId, byte reason)
+    {
+        try
+        {
+            connection.do_job_set(Vehicle.remove(vehicleId, reason));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to remove the vehicle:  " + vehicleId);
+            e.printStackTrace();
+        }
+    }
+
+    public void setSpeed(String vehicleId, double speed)
+    {
+        try
+        {
+            connection.do_job_set(Vehicle.setSpeed(vehicleId, speed));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to set the speed of the vehicle:  " + vehicleId);
+            e.printStackTrace();
+        }
+    }
+        // get the distance traveled by the vehicle
+        public double getDistance(String vehicleId)
+        {
+            try
+            {
+                return (Double) connection.do_job_get(Vehicle.getDistance(vehicleId));
+            }
+            catch (Exception e)
+            {
+                System.out.println("Failed to get the distance of the vehicle:  " + vehicleId);
+                e.printStackTrace();
+            }
+            return 0.0;
+        }
+        public double getCO2Emission(String vehicleId)
+        {
+            try
+            {
+                return (Double) connection.do_job_get(Vehicle.getCO2Emission(vehicleId));
+            }
+            catch (Exception e)
+            {
+                System.out.println("Failed to get the CO2 Emission:  " + vehicleId);
+                e.printStackTrace();
+            }
+            return 0.0;
+        }
 }
