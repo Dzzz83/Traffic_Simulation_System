@@ -36,7 +36,7 @@ public class SimulationManager {
             // initialize the connection with "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo-gui.exe",
             // "C:\\Program Files (x86)\\Eclipse\\Sumo\\doc\\tutorial\\quickstart\\data\\quickstart.sumocfg"
             connection = new SumoTraciConnection("C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo-gui.exe",
-                    "C:\\Users\\THIS PC\\Sumo\\2025-11-14-21-29-53\\osm.sumocfg");
+                    "C:\\Users\\THIS PC\\Downloads\\Traffic_Simulation_System\\src\\sumo\\demo.sumocfg");
             // start the simulation
             connection.runServer();
             // initialize the wrapper
