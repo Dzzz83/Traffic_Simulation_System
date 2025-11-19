@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="trafficWrapper.controllers.DashboardController"
+      alignment="CENTER" spacing="25" style="-fx-background-color: #121212;">
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="SUMO Real-Time Traffic Control" textFill="#00e676"
+           style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+
+    <HBox alignment="CENTER" spacing="40">
+        <Label text="Time:" textFill="white" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+        <Label fx:id="timeLabel" text="0.0 s" textFill="#00e676" style="-fx-font-size: 28px;"/>
+        <Label text="Vehicles:" textFill="white" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+        <Label fx:id="vehicleLabel" text="0" textFill="#00e676" style="-fx-font-size: 28px;"/>
+    </HBox>
+
+    <Label fx:id="statusLabel" text="Status: Ready" textFill="#ff5722"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="30" alignment="CENTER">
+        <Button text="Start Simulation" onAction="#startSimulation"
+                styleClass="btn-success" prefWidth="220" prefHeight="50"/>
+        <Button text="Emergency Stop" onAction="#emergencyStop"
+                styleClass="btn-danger" prefWidth="220" prefHeight="50"/>
+    </HBox>
+
+    <Separator prefWidth="800" style="-fx-background-color: #333;"/>
+
+    <Label text="Traffic Light Control" textFill="#2196f3"
+           style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+
+    <GridPane fx:id="tlGrid" hgap="25" vgap="15" alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="150"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="250"/>
+        </columnConstraints>
+    </GridPane>
+
+</VBox>

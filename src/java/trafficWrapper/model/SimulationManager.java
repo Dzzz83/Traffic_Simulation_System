@@ -9,11 +9,14 @@ SET Commands:
 conn.do_job_set(Command.setSomething(parameter, newValue));
 conn.do_job_set(Command.setSomething(parameter1, parameter2, ...));
  */
-package trafficWrapper;
+package trafficWrapper.model;
+
 import it.polito.appeal.traci.SumoTraciConnection;
 import java.util.List;
 import java.util.ArrayList;
+import de.tudresden.sumo.cmd.Trafficlight;
 import de.tudresden.sumo.cmd.Simulation;
+import trafficWrapper.VehicleWrapper;
 
 public class SimulationManager {
     // create the connection
@@ -189,5 +192,40 @@ public class SimulationManager {
     public boolean isRunning()
     {
         return isRunning;
+    }
+
+    public void setTrafficLightPhase(String tlId, int phaseIndex) {
+        if (connection == null || connection.isClosed()) {
+            System.out.println("Not connected to SUMO!");
+            return;
+        }
+
+        // Define your 4 standard phases (NS-EW intersection)
+        String[] phases = {
+                "GGGGgrrrrrGGGGgrrrrr",  // 0: North-South green
+                "yyyyyrrrrryyyyyrrrrr",  // 1: North-South yellow
+                "rrrrrGGGGgrrrrrGGGGg",  // 2: East-West green
+                "rrrrryyyyrrrrryyyyy"   // 3: East-West yellow
+        };
+
+        try {
+            String state = phases[phaseIndex];
+
+            // This works on EVERY TraCI4J version — official command 0xc2
+            connection.do_job_set(
+                    Trafficlight.setRedYellowGreenState(tlId, state)
+            );
+
+            System.out.println("SUCCESS: Traffic light '" + tlId + "' → phase " + phaseIndex);
+            System.out.println("        State: " + state);
+
+        } catch (Exception e) {
+            System.err.println("FAILED to change traffic light " + tlId);
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isConnected() {
+        return connection != null && connection.isClosed() == false;
     }
 }
