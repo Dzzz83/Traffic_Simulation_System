@@ -13,6 +13,7 @@ conn.do_job_set(Command.setSomething(parameter1, parameter2, ...));
 package trafficWrapper;
 
 import de.tudresden.sumo.cmd.Vehicle;
+import de.tudresden.ws.container.SumoPosition2D;
 import it.polito.appeal.traci.SumoTraciConnection;
 import java.util.List;
 import java.util.ArrayList;
@@ -73,6 +74,26 @@ public class VehicleWrapper
         catch (Exception e)
         {
             System.out.println("Failed to get the speed of the vehicle " + vehicleId);
+            e.printStackTrace();
+        }
+        return 0.0;
+    }
+
+    public SumoPosition2D getPosition(String vehicleId) {
+        try {
+            // Returns an object with x and y coordinates
+            return (SumoPosition2D) connection.do_job_get(Vehicle.getPosition(vehicleId));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new SumoPosition2D(0, 0);
+    }
+
+    // Helper to get the vehicle Angle (so you can rotate the rectangle/triangle)
+    public double getAngle(String vehicleId) {
+        try {
+            return (Double) connection.do_job_get(Vehicle.getAngle(vehicleId));
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return 0.0;

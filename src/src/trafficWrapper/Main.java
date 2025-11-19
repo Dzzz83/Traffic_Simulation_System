@@ -13,7 +13,8 @@ public class Main
         boolean isRunning = sim.isRunning();
         System.out.println("The simulation is: " + isRunning);
         // step a few times
-        for (int i = 0; i < 5; i++)
+
+        for (int i = 0; i <= 1000; i++)
         {
             System.out.println();
             System.out.println("Advancing " + (i+1) + " steps");

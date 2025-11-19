@@ -14,14 +14,19 @@ import it.polito.appeal.traci.SumoTraciConnection;
 import java.util.List;
 import java.util.ArrayList;
 import de.tudresden.sumo.cmd.Simulation;
+import de.tudresden.ws.container.SumoPosition2D;
 
 public class SimulationManager {
     // create the connection
     private SumoTraciConnection connection;
-    // initialize the vehicleWrapper
+    // initialize the vehicleWrapper, EdgeWrapper, TrafficLightWrapper
     private VehicleWrapper vehicleWrapper;
+    private EdgeWrapper edgeWrapper;
+    private TrafficLightWrapper trafficLightWrapper;
     // initialize the boolean value isRunning
     private boolean isRunning = false;
+
+    public SumoTraciConnection getConnection() { return connection; }
     // default Constructor
     public SimulationManager()
     {
@@ -35,12 +40,14 @@ public class SimulationManager {
             // the second parameter tells TraaS what map file to load
             // initialize the connection with "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo-gui.exe",
             // "C:\\Program Files (x86)\\Eclipse\\Sumo\\doc\\tutorial\\quickstart\\data\\quickstart.sumocfg"
-            connection = new SumoTraciConnection("C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo-gui.exe",
+            connection = new SumoTraciConnection("C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
                     "C:\\Users\\THIS PC\\Downloads\\Traffic_Simulation_System\\src\\sumo\\demo.sumocfg");
             // start the simulation
             connection.runServer();
             // initialize the wrapper
             vehicleWrapper = new VehicleWrapper(connection);
+            edgeWrapper = new EdgeWrapper(connection);
+            trafficLightWrapper = new TrafficLightWrapper(connection);
             // set the isRunning to true
             isRunning = true;
         }
@@ -142,6 +149,14 @@ public class SimulationManager {
         return new ArrayList<>();
     }
 
+    public SumoPosition2D getVehiclePosition(String id) {
+        return vehicleWrapper.getPosition(id);
+    }
+
+    public double getVehicleAngle(String id) {
+        return vehicleWrapper.getAngle(id);
+    }
+
     // create function getVehicleSpeed()
     public double getVehicleSpeed(String vehicleId)
     {
@@ -163,6 +178,17 @@ public class SimulationManager {
         }
         return 0.0;
     }
+
+    public int getEdgeCount() {
+        if (!isRunning) return 0;
+        return edgeWrapper.getEdgeCount();
+    }
+
+    public int getTrafficLightCount() {
+        if (!isRunning) return 0;
+        return trafficLightWrapper.getTrafficLightCount();
+    }
+
     // create function stopSimulation
     public void stopSimulation()
     {
