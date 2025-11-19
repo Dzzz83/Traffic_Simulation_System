@@ -35,8 +35,8 @@ public class SimulationManager {
             // the second parameter tells TraaS what map file to load
             // initialize the connection with "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo-gui.exe",
             // "C:\\Program Files (x86)\\Eclipse\\Sumo\\doc\\tutorial\\quickstart\\data\\quickstart.sumocfg"
-            connection = new SumoTraciConnection("C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo-gui.exe",
-                    "C:\\Users\\THIS PC\\Downloads\\Traffic_Simulation_System\\src\\sumo\\demo.sumocfg");
+            connection = new SumoTraciConnection("C:\\sumo-1.25.0\\bin\\sumo-gui.exe",
+                    "C:\\Users\\XUAN NGAN\\IdeaProjects\\Traffic_Simulation_System\\src\\sumo\\demo.sumocfg");
             // start the simulation
             connection.runServer();
             // initialize the wrapper
