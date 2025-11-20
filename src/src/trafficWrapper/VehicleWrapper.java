@@ -15,7 +15,6 @@ package trafficWrapper;
 import de.tudresden.sumo.cmd.Vehicle;
 import it.polito.appeal.traci.SumoTraciConnection;
 
-import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.ArrayList;
 import de.tudresden.sumo.objects.SumoPosition2D;
@@ -173,7 +172,7 @@ public class VehicleWrapper
             e.printStackTrace();
         }
     }
-
+    // set the speed of the vehicle
     public void setSpeed(String vehicleId, double speed)
     {
         try
@@ -186,31 +185,32 @@ public class VehicleWrapper
             e.printStackTrace();
         }
     }
-        // get the distance traveled by the vehicle
-        public double getDistance(String vehicleId)
+    // get the distance traveled by the vehicle
+    public double getDistance(String vehicleId)
+    {
+        try
         {
-            try
-            {
-                return (Double) connection.do_job_get(Vehicle.getDistance(vehicleId));
-            }
-            catch (Exception e)
-            {
-                System.out.println("Failed to get the distance of the vehicle:  " + vehicleId);
-                e.printStackTrace();
-            }
-            return 0.0;
+            return (Double) connection.do_job_get(Vehicle.getDistance(vehicleId));
         }
-        public double getCO2Emission(String vehicleId)
+        catch (Exception e)
         {
-            try
-            {
-                return (Double) connection.do_job_get(Vehicle.getCO2Emission(vehicleId));
-            }
-            catch (Exception e)
-            {
-                System.out.println("Failed to get the CO2 Emission:  " + vehicleId);
-                e.printStackTrace();
-            }
-            return 0.0;
+            System.out.println("Failed to get the distance of the vehicle:  " + vehicleId);
+            e.printStackTrace();
         }
+        return 0.0;
+    }
+    // get co2 from the vehicle
+    public double getCO2Emission(String vehicleId)
+    {
+        try
+        {
+            return (Double) connection.do_job_get(Vehicle.getCO2Emission(vehicleId));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to get the CO2 Emission:  " + vehicleId);
+            e.printStackTrace();
+        }
+        return 0.0;
+    }
 }

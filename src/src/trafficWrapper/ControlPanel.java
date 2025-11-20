@@ -12,14 +12,13 @@ conn.do_job_set(Command.setSomething(parameter1, parameter2, ...));
 package trafficWrapper;
 import it.polito.appeal.traci.SumoTraciConnection;
 
-import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.ArrayList;
 import de.tudresden.sumo.cmd.Simulation;
 import de.tudresden.sumo.objects.SumoPosition2D;
 
 
-public class SimulationManager {
+public class ControlPanel {
     // create the connection
     private SumoTraciConnection connection;
     // initialize the vehicleWrapper
@@ -27,9 +26,9 @@ public class SimulationManager {
     // initialize the boolean value isRunning
     private boolean isRunning = false;
     // default Constructor
-    public SimulationManager()
+    public ControlPanel()
     {
-        System.out.println("SimulationManager created - call startSimulation() to begin");
+        System.out.println("ControlPanel created - call startSimulation() to begin");
     }
     // create function startSimulation
     public void startSimulation()
@@ -68,7 +67,7 @@ public class SimulationManager {
         try
         {
             // use the SUMO command
-           return (Double) connection.do_job_get(Simulation.getTime());
+            return (Double) connection.do_job_get(Simulation.getTime());
         }
         catch (Exception e)
         {
@@ -124,7 +123,7 @@ public class SimulationManager {
         return 0;
     }
 
-      // create function getVehicleIDs
+    // create function getVehicleIDs
     public List<String> getVehicleIDs()
     {
         // check if running
@@ -273,7 +272,7 @@ public class SimulationManager {
         }
     }
 
-    // create function setRouteID
+    // create function removeVehicle
     public void removeVehicle(String vehicleId, byte reason)
     {
         // check if running
@@ -293,7 +292,7 @@ public class SimulationManager {
         }
     }
 
-    // create function setRouteID
+    // create function setSpeed
     public void setSpeed(String vehicleId, double speed)
     {
         // check if running
@@ -313,7 +312,7 @@ public class SimulationManager {
         }
     }
 
-    // create function setRouteID
+    // create function getDistance
     public double getDistance(String vehicleId)
     {
         // check if running
@@ -335,7 +334,7 @@ public class SimulationManager {
         return 0.0;
     }
 
-    // create function setRouteID
+    // create function getCo2
     public double getCO2Emission(String vehicleId)
     {
         // check if running

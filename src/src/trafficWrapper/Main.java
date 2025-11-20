@@ -7,79 +7,83 @@ public class Main
 {
     public static void main(String[] args) {
         // create the Simulation Manager instance
-        SimulationManager sim = new SimulationManager();
+        ControlPanel panel = new ControlPanel();
         // start the simulation
         System.out.println("Starting the simulation");
-        sim.startSimulation();
+        panel.startSimulation();
         // check isRunning
-        boolean isRunning = sim.isRunning();
+        boolean isRunning = panel.isRunning();
         System.out.println("The simulation is: " + isRunning);
         // step a few times
         for (int i = 0; i < 5; i++)
         {
             System.out.println();
             System.out.println("Advancing " + (i+1) + " steps");
-            sim.step();
+            panel.step();
             // show current time
-            double currentTime = sim.getCurrentTime();
+            double currentTime = panel.getCurrentTime();
             System.out.println("The current time is: " + currentTime);
             // show vehicle count
-            int vehicleCount = sim.getVehicleCount();
+            int vehicleCount = panel.getVehicleCount();
             System.out.println("The number of vehicles are: " + vehicleCount);
             // if vehicles > 0, show IDs and speed of the first vehicle
             if (vehicleCount > 0)
             {
-                List<String> vehicleIDs = sim.getVehicleIDs();
+                // get the list of vehicle ids
+                List<String> vehicleIDs = panel.getVehicleIDs();
                 System.out.println("The list of all of vehicle's IDs: " + vehicleIDs);
-                String vehicleID = vehicleIDs.get(0);
-                double speed = sim.getVehicleSpeed(vehicleID);
+                // get the ID of the first vehicle
+                String firstVehicleID = vehicleIDs.get(0);
+                // get the speed of the first vehicle
+                double speed = panel.getVehicleSpeed(firstVehicleID);
                 System.out.println("The speed of the first vehicle is: " + speed);
                 // show position
-                SumoPosition2D position = sim.getPosition(vehicleID);
+                SumoPosition2D position = panel.getPosition(firstVehicleID);
                 System.out.println("The position of the first vehicle is: " + position);
                 // get lane id
-                String laneID = sim.getLaneID(vehicleID);
+                String laneID = panel.getLaneID(firstVehicleID);
                 System.out.println("The lane id of the first vehicle is: " + laneID);
             }
         }
         // add vehicle
-        sim.addVehicle(
+        panel.addVehicle(
                 "myNewCar",     // vehicleId - unique ID for the new vehicle
                 "DEFAULT_VEHTYPE", // typeId - vehicle type
-                "D2 1i",       // routeId - predefined route in SUMO
+                "route01",       // routeId - predefined route in SUMO
                 0,              // depart - departure time (0 = immediately)
                 0.0,            // position - starting position on lane
                 0.0,            // speed - initial speed
                 (byte)0         // lane - starting lane (0 = first lane)
         );
         System.out.println("The new vehicle has been added ");
-        List<String> vehicleIDs = sim.getVehicleIDs();
+        // get the list of vehicle's ids
+        List<String> vehicleIDs = panel.getVehicleIDs();
         String vehicleID = vehicleIDs.get(1);
         // get road id
-        String roadID = sim.getRoadID(vehicleID);
+        String roadID = panel.getRoadID(vehicleID);
         System.out.println("The road id of the second vehicle is: " + roadID);
-
-        // set route id
-        sim.setRouteID(vehicleID, "route1");
+        // set the route id
+        panel.setRouteID(vehicleID, "route02");
         System.out.println("The route id of the second vehicle is: " + roadID);
-        // set route id
+        // set speed
         double speed = 58.8;
-        sim.setSpeed(vehicleID, speed);
+        panel.setSpeed(vehicleID, speed);
         System.out.println("The speed of the second vehicle is: " + speed);
-
-        double distance = sim.getDistance(vehicleID);
+        // get distance
+        double distance = panel.getDistance(vehicleID);
         System.out.println("The distance of the second vehicle is: " + distance);
-
-        double co2 = sim.getCO2Emission(vehicleID);
+        // get co2
+        double co2 = panel.getCO2Emission(vehicleID);
         System.out.println("The CO2 of the second vehicle is: " + co2);
-
-        sim.removeVehicle(vehicleID, (byte) 0);
+        // remove the vehicle
+        panel.removeVehicle(vehicleID, (byte) 0);
         System.out.println("The second vehicle is removed");
 
         // stop the simulation
         System.out.println("Stopping the simulation");
-        sim.stopSimulation();
-        isRunning = sim.isRunning();
+        panel.stopSimulation();
+        isRunning = panel.isRunning();
+
         System.out.println("The state of the simulation is: " + isRunning);
         System.out.println("The test is done");
     }
