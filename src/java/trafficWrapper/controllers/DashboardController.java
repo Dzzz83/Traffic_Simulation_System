@@ -1,10 +1,12 @@
 package trafficWrapper.controllers;
+
 import trafficWrapper.model.SimulationManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;           // ← ADD THIS
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
@@ -18,12 +20,33 @@ public class DashboardController implements Initializable {
     @FXML private Label statusLabel;
     @FXML private GridPane tlGrid;
 
+    // ← ADD THIS LINE (your map container from FXML)
+    @FXML private Pane mapContainer;        // ← fx:id="mapContainer" in Dashboard.fxml
+
     private SimulationManager sim = new SimulationManager();
-    private final String[] TL_IDS = {"0", "1", "2", "3"};   // ← change to your real IDs
+    private final String[] TL_IDS = {"0", "1", "2", "3"};
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         createTrafficLightControls();
+
+        // ←←← PASTE THE MAP CODE HERE (after controls are created) ←←←
+        if (mapContainer != null) {
+            SumoMapCanvas mapCanvas = new SumoMapCanvas(1200, 800);
+
+            // Fill the entire container
+            mapCanvas.widthProperty().bind(mapContainer.widthProperty());
+            mapCanvas.heightProperty().bind(mapContainer.heightProperty());
+
+            mapContainer.getChildren().add(mapCanvas);
+
+            // Optional: nice dark background if not already set in FXML
+            mapContainer.setStyle("-fx-background-color: #1e1e1e;");
+        } else {
+            System.out.println("WARNING: mapContainer not found! Check fx:id in FXML");
+        }
+        // ←←← END OF MAP CODE ←←←
+
         startRefreshTask();
     }
 

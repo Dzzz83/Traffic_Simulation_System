@@ -43,5 +43,20 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="250"/>
         </columnConstraints>
     </GridPane>
+    <!-- ============================================== -->
+    <!--          THE MAP GOES HERE (BIG & BEAUTIFUL)        -->
+    <!-- ============================================== -->
+    <Separator prefWidth="1000" style="-fx-background-color: #333;" />
+
+    <Label text="Live Network View" textFill="#00bcd4"
+           style="-fx-font-size: 26px; -fx-font-weight: bold;" />
+
+    <!-- THIS IS THE CONTAINER WE REFERENCE IN THE CONTROLLER -->
+    <Pane fx:id="mapContainer"
+          prefWidth="1200"
+          prefHeight="700"
+          style="-fx-background-color: #1e1e1e; -fx-border-color: #333; -fx-border-width: 2;">
+        <!-- SumoMapCanvas will be added here programmatically -->
+    </Pane>
 
 </VBox>

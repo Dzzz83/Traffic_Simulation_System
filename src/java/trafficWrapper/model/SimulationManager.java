@@ -31,29 +31,28 @@ public class SimulationManager {
         System.out.println("SimulationManager created - call startSimulation() to begin");
     }
     // create function startSimulation
-    public void startSimulation()
-    {
+
+    public void startSimulation() {
         try {
-            // the first parameter tells TraaS which GUI to use
-            // the second parameter tells TraaS what map file to load
-            // initialize the connection with "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo-gui.exe",
-            // "C:\\Program Files (x86)\\Eclipse\\Sumo\\doc\\tutorial\\quickstart\\data\\quickstart.sumocfg"
-            connection = new SumoTraciConnection("C:\\sumo-1.25.0\\bin\\sumo-gui.exe",
+            connection = new SumoTraciConnection(
+                    "C:\\sumo-1.25.0\\bin\\sumo.exe",
                     "C:\\Users\\XUAN NGAN\\IdeaProjects\\Traffic_Simulation_System\\src\\sumo\\demo.sumocfg");
-            // start the simulation
-            connection.runServer();
-            // initialize the wrapper
+
+            // Keep this for auto-start, but REMOVE the remote-port line to avoid duplicate
+            connection.addOption("start", "true");
+            // Do NOT add: connection.addOption("remote-port", "9999");  // This causes the duplicate!
+
+            connection.runServer();  // TraaS will auto-pick a port (e.g., 61203)
+
             vehicleWrapper = new VehicleWrapper(connection);
-            // set the isRunning to true
             isRunning = true;
-        }
-        catch (Exception e)
-        {
+
+            System.out.println("SUMO started successfully in headless mode (auto-port)");
+
+        } catch (Exception e) {
             System.out.println("Failed to run the simulation");
             e.printStackTrace();
         }
-
-
     }
     // function getCurrentTime()
     public double getCurrentTime()
