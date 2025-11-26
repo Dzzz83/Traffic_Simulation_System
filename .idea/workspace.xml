@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d6be6ff1-4a36-4f33-bb8a-d552771df72c" name="Changes" comment="update Main.java, VehicleWrapper.java, change name of SimulationManager.java to ControlPanel.java. The code can run with no error." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Dzzz83&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Dzzz83/Traffic_Simulation_System.git&quot;,
+    &quot;accountId&quot;: &quot;525c1134-77d8-4c1f-acbe-ce084ce98b65&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="35c3DyawUR0rwHNJy17e0SL5gvS" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.NetworkScanner.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "test",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="trafficWrapper.Main" />
+      <module name="src" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="trafficWrapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NetworkScanner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="trafficWrapper.NetworkScanner" />
+      <module name="src" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="trafficWrapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.NetworkScanner" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d6be6ff1-4a36-4f33-bb8a-d552771df72c" name="Changes" comment="" />
+      <created>1763395416580</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763395416580</updated>
+    </task>
+    <task id="LOCAL-00001" summary="some basic wrapper">
+      <option name="closed" value="true" />
+      <created>1763501935711</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763501935711</updated>
+    </task>
+    <task id="LOCAL-00002" summary="some basic wrapper">
+      <option name="closed" value="true" />
+      <created>1763502036635</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763502036635</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update Main and SimulationManager">
+      <option name="closed" value="true" />
+      <created>1763549692674</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763549692674</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update main, sim and vehWrap but still contains error related to setrouteID">
+      <option name="closed" value="true" />
+      <created>1763588065488</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763588065488</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update main, change name of SimulationManager.java to ControlPanel.java, create new file called NetworkScanner.java to detect edges and routes. The code can run with no error.">
+      <option name="closed" value="true" />
+      <created>1763624271665</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763624271665</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update Main.java, VehicleWrapper.java, change name of SimulationManager.java to ControlPanel.java. The code can run with no error.">
+      <option name="closed" value="true" />
+      <created>1763627994994</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763627994994</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="some basic wrapper" />
+    <MESSAGE value="update Main and SimulationManager" />
+    <MESSAGE value="update main, sim and vehWrap but still contains error related to setrouteID" />
+    <MESSAGE value="update main, change name of SimulationManager.java to ControlPanel.java, create new file called NetworkScanner.java to detect edges and routes. The code can run with no error." />
+    <MESSAGE value="update Main.java, VehicleWrapper.java, change name of SimulationManager.java to ControlPanel.java. The code can run with no error." />
+    <option name="LAST_COMMIT_MESSAGE" value="update Main.java, VehicleWrapper.java, change name of SimulationManager.java to ControlPanel.java. The code can run with no error." />
+  </component>
+</project>
